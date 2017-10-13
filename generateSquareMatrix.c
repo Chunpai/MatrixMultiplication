@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdio.h>
 #include<time.h>
 #include<stdlib.h>
 #include<string.h>
@@ -21,7 +20,7 @@ void generateSquareDoubleMatrix(int matrixSize, char name[])
   char comma[2];
   strcat(name,".csv");   //pass in the name, and save the matrix into name.csv
   fp = fopen(name,"w");
-  srand(time(NULL));
+  //srand(time(NULL));
   fprintf(fp, "%d\n", matrixSize);
   for(i=0;i<matrixSize;i++)
   {

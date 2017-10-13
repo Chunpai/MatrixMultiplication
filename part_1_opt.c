@@ -1,11 +1,12 @@
 /******************************************************************************
- * * FILE: part_1_navie.c 
+ * * FILE: part_1_opt.c 
  * * DESCRIPTION: this code will do following things 
  * 1. in command-line pass into size n of the matrices
  * 2. generate 3 matrices, and save them into A.csv, B.csv, C.csv
  * 3. read those 3 matrices from those *.csv files into 2D arrays 
  *      matA, matB, matC
- * 4. use 3 loops to compute the C = C + A*B
+ * 4. use 3 optimized loops to compute the C = C + A*B due to memory 
+ *    access efficicy by switching the loop of j and k of the navie version
  * 5. print out the result matrix C on console
  * ******************************************************************************/
 
@@ -46,9 +47,11 @@ int main(int argc, char *argv[]){
 void generateMatrices(int n){
     char mat1_name[128] = "A"; 
     generateSquareDoubleMatrix(n,mat1_name);
+    srand(time(NULL));
 
     char mat2_name[128] = "B"; 
     generateSquareDoubleMatrix(n,mat2_name);
+    srand(time(NULL));
 
     char mat3_name[128] = "C"; 
     generateSquareDoubleMatrix(n,mat3_name);
@@ -158,8 +161,8 @@ void matrixMulti(int n){
 
     /*---------------------------------3 loops for calculation-----------------------------------*/
     for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            for(k=0;k<n;k++){
+        for(k=0;k<n;k++){
+            for(j=0;j<n;j++){
                 matC[i][j] = matC[i][j] + matA[i][k]*matB[k][j];
             }
         }

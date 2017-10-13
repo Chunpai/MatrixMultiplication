@@ -3,7 +3,7 @@ Email:  cwang25@albany.edu
 Date:   10/12/2017
 
 Files:
-    README.md               - this file
+    README                  - this file
     Makefile                - Makefile to compile all codes 
     part_1_navie.c          - navie implementation of matrix multiplication
     part_1_opt.c            - optimized implementation of matrix multiplication
@@ -15,11 +15,27 @@ Files:
     timing.c                - used to count the time
     timing.h                - header file
 
-Use commmand:
+
+Use commmands:
        make
                 :- to compile and get the corresponding binary codes 
        
+       ./Part_1_navie.out N
+                :- N is the matrix size
+
+       ./Part_1_opt.out N
+                :- N is the matrix size
+
+       ./Part_2_serial.out Num P
+                :- Num is the number SumUpto, P is the number of loop
+
+       ./Part_2_parallel.out Num P
+                :- Num is the number SumUpto, P is the number of threads
+
+       ./Part_3_parallel.out N P
+                :- N is the matrix size, P is the number of threads
+
        make clean 
                 :- clear all binary codes and matrices files which store in .csv
 
-
+        

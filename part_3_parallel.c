@@ -57,11 +57,11 @@ int main(int argc, char *argv[]){
 
     FILE *fstream;
     char *record,*line;
-    char buffer[1024];
+    char buffer[102400];
     int i,j,k;
     int matN[N][N];
 
-    generateMatrix(N);
+    //generateMatrix(N);
     
     //start reading the matrix
     i=0;j=0;
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]){
     int dist[10] = {0};
     for(t=0; t<num_threads;t++){
         rc = pthread_join(threads[t],&status);  // need pthread_join to join threads first
-        for(k=0;k<N;k++){    
+        for(k=0;k<10;k++){    
             dist[k] += *((int *)status+k);
             //printf("t:%d %d\n",t,*((int *)status+k));  //used to check if every thread return the value with same address
         }
@@ -129,7 +129,7 @@ int main(int argc, char *argv[]){
     }
     
     printf("Distributions: (value:count)");
-    for(i=0;i<N;i++){
+    for(i=0;i<10;i++){
         printf("\n(%d:%d) ",i+1,dist[i]);
     }
     printf("\n");
@@ -162,12 +162,14 @@ void *Count(void *arg){
     thread_data *data = (thread_data *)arg;
     //printf("matN address %p\n",data->matrix);
     startIndex = data->thread_id * data->chunk_size;
+
     if( (data->N *data->N) - (data->thread_id+1)*(data->chunk_size) < data->chunk_size){
         endIndex = data->N * data->N ;
     }
     else{
         endIndex = (data->thread_id+1)*(data->chunk_size);
     }
+    //printf("%d,%d,%d\n",data->thread_id,startIndex,endIndex);
     for(i= startIndex; i < endIndex; i++) {
         val = *(data->matrix + i);  //access the its own chunk of matN 
         distribution[val-1] += 1;   // aggregate the count into the array distribution
