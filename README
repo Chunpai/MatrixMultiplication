@@ -1,38 +1,37 @@
 Author: Chunpai Wang
 Email:  cwang25@albany.edu
-Date:   10/12/2017
+Date:   10/14/2017
 
 Files:
     README                  - this file
     Makefile                - Makefile to compile all codes 
-    part_1_navie.c          - navie implementation of matrix multiplication
-    part_1_opt.c            - optimized implementation of matrix multiplication
-    part_2_serial.c         - serial implementation of part 2
-    part_2_parallel.c       - parallel implementation of part 2
-    part_3_parallel.c       - parallel implementation of part 3, serial implementation is use command-line parameter P = 1
+    serial.c                - navie implementation of matrix multiplication
+    parallel.c              - parallel implementation of part 3, serial implementation is use command-line parameter P = 1
     generateSquareMatrix.c  - used to generate square matrices
-    generateSquareMatrix.h  - header file
     timing.c                - used to count the time
     timing.h                - header file
+    
+    A.csv                   - where matrix A is stored
+    B.csv                   - where matrix B is stored
+    C_serial.csv            - where matrix C result from serial program is stored
+    C_parallel.csv          - where matrix C result from parallel program is stored
+
+    generateSquareMatrix.out   - binary code 
+    serial.out                 - binary code
+    parallel.out               - binary code
 
 
 Use commmands:
        make
                 :- to compile and get the corresponding binary codes 
        
-       ./Part_1_navie.out N
+       ./generateMatrices.out N
                 :- N is the matrix size
 
-       ./Part_1_opt.out N
+       ./serial.out N 
                 :- N is the matrix size
 
-       ./Part_2_serial.out Num P
-                :- Num is the number SumUpto, P is the number of loop
-
-       ./Part_2_parallel.out Num P
-                :- Num is the number SumUpto, P is the number of threads
-
-       ./Part_3_parallel.out N P
+       ./parallel.out N P 
                 :- N is the matrix size, P is the number of threads
 
        make clean 
