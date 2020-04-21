@@ -1,6 +1,6 @@
-Author: Chunpai Wang
-Email:  cwang25@albany.edu
-Date:   10/14/2017
+Author: Chunpai Wang   
+Email:  cwang25@albany.edu   
+Date:   10/14/2017  
 
 ### Files:
 ```
